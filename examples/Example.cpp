@@ -20,7 +20,7 @@ int main() {
     s5 = s3;
     s6 = std::move(s4);
 
-    // Operator Overloads
+    // << Operator Overload
     std::cout << "s0: " << s0 << std::endl;
     std::cout << "s1: " << s1 << std::endl;
     std::cout << "s2: " << s2 << std::endl;
