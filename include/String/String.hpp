@@ -4,11 +4,11 @@
 #include <cstring>
 #include <iostream>
 
-class String {
+class string_t {
 public:
-  String() = default;
+  string_t() = default;
 
-  ~String() {
+  ~string_t() {
     if (mBuffer) {
       mLength = 0;
       delete[] mBuffer;
@@ -16,26 +16,26 @@ public:
     }
   }
 
-  explicit String(const char *str) {
+  explicit string_t(const char *str) {
     mLength = std::strlen(str);
     mBuffer = new char[mLength + 1];
     mBuffer[mLength] = '\0';
     std::copy_n(str, mLength, mBuffer);
   }
 
-  String(const String &other) : mLength(other.mLength) {
+  string_t(const string_t &other) : mLength(other.mLength) {
     mBuffer = new char[other.mLength + 1];
     std::copy_n(other.mBuffer, other.mLength, mBuffer);
     mBuffer[other.mLength] = '\0';
   }
 
-  String(String &&other) noexcept
+  string_t(string_t &&other) noexcept
       : mLength(other.mLength), mBuffer(other.mBuffer) {
     other.mLength = 0;
     other.mBuffer = nullptr;
   }
 
-  String &operator=(const String &other) {
+  string_t &operator=(const string_t &other) {
     if (this != &other) {
       mLength = other.mLength;
       mBuffer = new char[other.mLength + 1];
@@ -45,7 +45,7 @@ public:
     return *this;
   }
 
-  String &operator=(String &&other) noexcept {
+  string_t &operator=(string_t &&other) noexcept {
     if (this != &other) {
       mLength = other.mLength;
       mBuffer = other.mBuffer;
@@ -57,7 +57,7 @@ public:
 
   size_t length() const { return mLength; }
 
-  friend std::ostream &operator<<(std::ostream &os, const String &string) {
+  friend std::ostream &operator<<(std::ostream &os, const string_t &string) {
     if (string.mBuffer) {
       os << string.mBuffer;
     }

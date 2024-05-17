@@ -1,26 +1,21 @@
 #include "String/String.hpp"
 
-#include <utility> // std::move
+#include <utility>
 
 int main() {
-    // Default Constructor
-    String s0;
+    string_t s0;
 
-    // Constructors
-    String s1("dead");
-    String s2("beef");
+    string_t s1("dead");
+    string_t s2("beef");
 
-    // Copy & Move Constructors
-    String s3(s1);
-    String s4(std::move(s2));
+    string_t s3(s1);
+    string_t s4(std::move(s2));
 
-    // Copy & Move Assignment Operators
-    String s5;
-    String s6;
+    string_t s5;
+    string_t s6;
     s5 = s3;
     s6 = std::move(s4);
 
-    // << Operator Overload
     std::cout << "s0: " << s0 << std::endl;
     std::cout << "s1: " << s1 << std::endl;
     std::cout << "s2: " << s2 << std::endl;
