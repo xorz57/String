@@ -29,8 +29,7 @@ public:
         mBuffer[other.mLength] = '\0';
     }
 
-    string_t(string_t &&other) noexcept
-        : mLength(other.mLength), mBuffer(other.mBuffer) {
+    string_t(string_t &&other) noexcept : mLength(other.mLength), mBuffer(other.mBuffer) {
         other.mLength = 0;
         other.mBuffer = nullptr;
     }
